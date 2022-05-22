@@ -9,8 +9,7 @@ namespace srbd_mpc {
 
 StateEquation::StateEquation(const double dt, const double m, const Matrix3d& I, 
                              const Vector3d& g)
-  : dt_(dt),
-    m_(m),
+  : m_(m),
     g_(g),
     R_(Matrix3d::Identity()),
     I_local_(I),
@@ -32,7 +31,7 @@ StateEquation::StateEquation(const double dt, const double m, const Matrix3d& I,
 }
 
 
-void StateEquation::initQP(QPData& qp_data) {
+void StateEquation::initQP(QPData& qp_data) const {
   for (int i=0; i<qp_data.dim.N; ++i) {
     qp_data.qp.A[i].setZero();
     qp_data.qp.A[i].template block<3, 3>(3, 9) = dt_ * Matrix3d::Identity();
@@ -48,25 +47,20 @@ void StateEquation::initQP(QPData& qp_data) {
 }
 
 
-void StateEquation::setQP(const double yaw_angle, 
-                          const LegKinematics& leg_kinematics, 
-                          const ContactSchedule& contact_schedule, 
-                          QPData& qp_data) {
-  const double cosy = std::cos(yaw_angle); 
-  const double siny = std::sin(yaw_angle); 
+void StateEquation::setQP(const ContactSchedule& contact_schedule, 
+                          const RobotState& robot_state, QPData& qp_data) {
   // rotation matrix
-  R_ <<  cosy,  siny,  0.0,
-        -siny,  cosy,  0.0,
-          0.0,   0.0,  1.0;
+  R_ = robot_state.R();
   // global inertia matrix
   I_global_inv_.noalias() = R_.transpose() * I_local_;
   I_global_.noalias() = I_global_inv_ * R_;
   I_global_inv_ = I_global_.inverse();
   // dynamics w.r.t. control input
   for (int i=0; i<4; ++i) {
-    I_inv_r_skew_[i].noalias() = dt_ * I_global_inv_ * leg_kinematics.getSkew(i);
+    I_inv_r_skew_[i].noalias() 
+        = dt_ * I_global_inv_ * robot_state.getLegKinematicsSkew(i);
   }
-  for (int i=0; i<=qp_data.dim.N; ++i) {
+  for (int i=0; i<qp_data.dim.N; ++i) {
     qp_data.qp.A[i].template block<3, 3>(0, 6) = dt_ * R_;
     int nu = 0;
     for (int j=0; j<4;++j) {

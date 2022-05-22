@@ -5,6 +5,7 @@
 #include <deque>
 #include <cassert>
 
+#include "srbd_mpc/types.hpp"
 
 namespace srbd_mpc {
 
@@ -40,6 +41,14 @@ public:
 
   int N() const {
     return N_;
+  }
+
+  double T() const {
+    return T_;
+  }
+
+  double dt() const {
+    return dt_;
   }
 
 private:

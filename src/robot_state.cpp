@@ -1,8 +1,9 @@
-#include "srbd_mpc/leg_kinematics.hpp"
+#include "srbd_mpc/robot_state.hpp"
 
 #include "pinocchio/parsers/urdf.hpp"
 #include "pinocchio/algorithm/joint-configuration.hpp"
 #include "pinocchio/algorithm/frames.hpp"
+#include "pinocchio/algorithm/center-of-mass.hpp"
 
 #include <stdexcept>
 #include <iostream>
@@ -10,10 +11,15 @@
 
 namespace srbd_mpc {
 
-LegKinematics::LegKinematics(const std::string& urdf, 
-                             const std::vector<std::string>& feet) 
+RobotState::RobotState(const std::string& urdf, 
+                       const std::vector<std::string>& feet) 
   : model_(),
     data_(),
+    R_(Matrix3d::Identity()),
+    quat_(Quaterniond::Identity()),
+    pose_(Vector7d::Zero()),
+    w_local_(Vector3d::Zero()), 
+    w_world_(Vector3d::Zero()),
     feet_(),
     fk_(4, Vector3d::Zero()),
     fk_skew_(4, Matrix3d::Zero()) {
@@ -35,8 +41,17 @@ LegKinematics::LegKinematics(const std::string& urdf,
 }
 
 
-void LegKinematics::update(const Vector19d& q) {
+void RobotState::update(const Vector19d& q, const Vector18d& v) {
   pinocchio::framesForwardKinematics(model_, data_, q);
+  pinocchio::centerOfMass(model_, data_, q, v, false);
+  quat_.coeffs() = q.template segment<4>(3);
+  R_ = quat_.toRotationMatrix();
+  pose_  = q.template head<7>();
+  w_local_ = v.template segment<3>(3);
+  w_world_ = R_ * w_local_;
+  twist_local_ = v.template head<6>();
+  twist_world_.template head<3>().noalias() = R_ * v.template head<3>();
+  twist_world_.template tail<3>() = w_world_;
   for (int i=0; i<4; ++i) {
     fk_[i] = data_.oMf[feet_[i]].translation() - data_.com[0];
     pinocchio::skew(fk_[i], fk_skew_[i]);

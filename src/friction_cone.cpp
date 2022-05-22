@@ -1,7 +1,6 @@
 #include "srbd_mpc/friction_cone.hpp"
 
 #include <stdexcept>
-#include <cmath>
 #include <iostream>
 #include <cmath>
 
@@ -12,7 +11,7 @@ FrictionCone::FrictionCone(const double mu, const double fzmin, const double fzm
   : mu_(mu),
     fzmin_(fzmin),
     fzmax_(fzmax),
-    cone_(Matrix43d::Zero()) {
+    cone_(MatrixXd::Zero(16, 12)) {
   try {
     if (mu <= 0.0) {
       throw std::out_of_range("Invalid argument: mu must be positive!");
@@ -28,22 +27,25 @@ FrictionCone::FrictionCone(const double mu, const double fzmin, const double fzm
     std::cerr << e.what() << '\n';
     std::exit(EXIT_FAILURE);
   }
-  cone_ <<  1.0,  0.0, -(mu/std::sqrt(2)),
-           -1.0,  0.0, -(mu/std::sqrt(2)),
-            0.0,  1.0, -(mu/std::sqrt(2)),
-            0.0, -1.0, -(mu/std::sqrt(2));
+  MatrixXd cone(4, 3);
+  cone <<  1.0,  0.0, -(mu/std::sqrt(2)),
+          -1.0,  0.0, -(mu/std::sqrt(2)),
+           0.0,  1.0, -(mu/std::sqrt(2)),
+           0.0, -1.0, -(mu/std::sqrt(2));
+  for (int i=0; i<4; ++i) {
+    cone_.block(4*i, 3*i, 4, 3) = cone;
+  }
 }
 
 
 FrictionCone::FrictionCone()
   : mu_(),
     fzmin_(),
-    fzmax_(),
-    cone_(Matrix43d::Zero()) {
+    fzmax_() {
 }
 
 
-void FrictionCone::setQP(QPData& qp_data) {
+void FrictionCone::setQP(QPData& qp_data) const {
   for (int i=0; i<qp_data.dim.N; ++i) {
     for (int j=0; j<qp_data.dim.nbu[i]; ++j) {
       qp_data.qp.idxbu[i][j] = 3*j + 2;
@@ -53,9 +55,11 @@ void FrictionCone::setQP(QPData& qp_data) {
   }
   for (int i=0; i<qp_data.dim.N; ++i) {
     qp_data.qp.C[i].setZero();
-    qp_data.qp.D[i].setZero();
-    for (int j=0; j<qp_data.dim.nbu[i]; ++j) {
-      qp_data.qp.D[i].template block<4, 3>(4*j, 3*j) = cone_;
+    const int num_conatcts = qp_data.dim.nbu[i] / 3;
+    assert(qp_data.dim.nbu[i] % 3 == 0);
+    if (num_conatcts > 0) {
+      qp_data.qp.D[i] 
+          = cone_.topLeftCorner(qp_data.qp.D[i].rows(), qp_data.qp.D[i].cols());
     }
     qp_data.qp.lg[i].setZero();
     qp_data.qp.ug[i].setZero();

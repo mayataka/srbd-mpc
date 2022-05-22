@@ -14,13 +14,11 @@ public:
 
   ~FrictionCone() = default;
 
-  void setQP(QPData& qp_data);
-
-  EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+  void setQP(QPData& qp_data) const;
 
 private:
   double mu_, fzmin_, fzmax_;
-  Matrix43d cone_;
+  MatrixXd cone_;
 };
 
 } // namespace srbd_mpc

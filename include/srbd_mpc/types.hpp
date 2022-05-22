@@ -7,29 +7,34 @@
 #include "Eigen/LU"
 #include "Eigen/StdVector"
 
+#include "pinocchio/spatial/se3.hpp"
+#include "pinocchio/spatial/explog.hpp"
+
+
 namespace srbd_mpc {
+
+
+using MatrixXd   = Eigen::MatrixXd;
+using VectorXd   = Eigen::VectorXd;
 
 using Matrix3d   = Eigen::Matrix<double, 3, 3>;
 using Matrix6d   = Eigen::Matrix<double, 6, 6>;
-using Matrix9d   = Eigen::Matrix<double, 9, 9>;
-using Matrix53d  = Eigen::Matrix<double, 5, 3>;
-using Matrix43d  = Eigen::Matrix<double, 4, 3>;
 using Matrix12d  = Eigen::Matrix<double, 12, 12>;
-using Matrix12Xd = Eigen::Matrix<double, 12, Eigen::Dynamic>;
-using MatrixXd   = Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic>;
 using Vector3d   = Eigen::Matrix<double, 3, 1>;
-using Vector5d   = Eigen::Matrix<double, 5, 1>;
-using Vector12d  = Eigen::Matrix<double, 12, 1>;
+using Vector4d   = Eigen::Matrix<double, 3, 1>;
+using Vector6d   = Eigen::Matrix<double, 6, 1>;
+using Vector7d   = Eigen::Matrix<double, 7, 1>;
 using Vector19d  = Eigen::Matrix<double, 19, 1>;
-using VectorXd   = Eigen::VectorXd;
+using Vector18d  = Eigen::Matrix<double, 18, 1>;
 
+using Quaterniond = Eigen::Quaternion<double>;
 using Eigen::Block;
-
 using Eigen::VectorBlock;
 
 template <typename T>
 using aligned_vector = std::vector<T, Eigen::aligned_allocator<T>>;
 
+using pinocchio::SE3;
 
 } // namespace srbd_mpc
 
