@@ -1,7 +1,0 @@
-/home/sotaro/src/srbd_mpc/build/CMakeFiles/install/strip.dir
-/home/sotaro/src/srbd_mpc/build/CMakeFiles/install/local.dir
-/home/sotaro/src/srbd_mpc/build/CMakeFiles/install.dir
-/home/sotaro/src/srbd_mpc/build/CMakeFiles/list_install_components.dir
-/home/sotaro/src/srbd_mpc/build/CMakeFiles/rebuild_cache.dir
-/home/sotaro/src/srbd_mpc/build/CMakeFiles/edit_cache.dir
-/home/sotaro/src/srbd_mpc/build/CMakeFiles/srbd_mpc.dir
