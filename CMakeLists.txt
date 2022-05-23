@@ -8,9 +8,9 @@ set(CMAKE_CXX_STANDARD 11)
 option(OPTIMIZE_FOR_NATIVE "Enable -march=native" OFF)
 option(BUILD_PYTHON_INTERFACE "Build Python interface" ON)
 
-##########################
-## Build quadruped_lmpc ##
-##########################
+####################
+## Build srbd_mpc ##
+####################
 if(NOT CMAKE_BUILD_TYPE MATCHES Release)
   message(STATUS "WARNING: CMAKE_BUILD_TYPE is NOT set to Release, which can decrease performance significantly.")
 endif()
@@ -59,6 +59,31 @@ endif()
 # if (BUILD_PYTHON_INTERFACE)
 #   add_subdirectory(bindings/python)
 # endif()
+
+#############
+## Testing ##
+#############
+# Add testing directory
+if (BUILD_TESTING)
+  enable_testing()
+  # coverage options
+  set(CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} --coverage")
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
+  add_library(coverage_config INTERFACE)
+  if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_compile_options(coverage_config INTERFACE
+      -O0        
+      -g         
+      --coverage 
+    )
+    if(CMAKE_VERSION VERSION_GREATER_EQUAL 3.13)
+      target_link_options(coverage_config INTERFACE --coverage)
+    else()
+      target_link_libraries(coverage_config INTERFACE --coverage)
+    endif()
+  endif()
+  add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/test)
+endif() # end if (BUILD_TESTS)
 
 #############
 ## Install ##

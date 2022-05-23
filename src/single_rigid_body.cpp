@@ -7,8 +7,8 @@
 namespace srbd_mpc {
 
 SingleRigidBody::SingleRigidBody() 
-  model_(),
-  data_() {
+  : model_(),
+    data_() {
   pinocchio::Model model_;
   pinocchio::Data data_;
   const auto joint_index = model_.addJoint(model_.getJointId("universe"), 

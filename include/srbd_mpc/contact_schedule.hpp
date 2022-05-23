@@ -27,16 +27,16 @@ public:
     return phase_[stage];
   }
 
-  int numActiveContacts(const int stage) const {
-    assert(stage >= 0);
-    assert(stage <= N_);
-    return phase_[stage];
-  }
-
   const std::vector<bool> isContactActive(const int phase) const {
     assert(phase >= 0);
     assert(phase <= N_);
     return is_contact_active_[phase];
+  }
+
+  int numActiveContacts(const int phase) const {
+    assert(phase >= 0);
+    assert(phase <= N_);
+    return num_active_contacts_[phase];
   }
 
   int N() const {
@@ -56,6 +56,7 @@ private:
   int N_;
   std::vector<double> t_;
   std::vector<std::vector<bool>> is_contact_active_;
+  std::vector<int> num_active_contacts_;
   std::vector<int> phase_;
 };
 
