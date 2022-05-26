@@ -33,13 +33,15 @@ macro(add_srbd_mpc_test TESTNAME)
   )
 endmacro()
 
-# # copy urdf files
-# configure_file(
-#   ${CMAKE_CURRENT_SOURCE_DIR}/urdf/a1.urdf
-#   ${CMAKE_CURRENT_BINARY_DIR}/urdf/a1.urdf
-#   COPYONLY
-# )
+# copy urdf files
+configure_file(
+  ${PROJECT_SOURCE_DIR}/urdf/a1_description/urdf/a1.urdf
+  ${CMAKE_CURRENT_BINARY_DIR}/urdf/a1.urdf
+  COPYONLY
+)
 
 # add tests
 add_srbd_mpc_test(contact_schedule_test)
 add_srbd_mpc_test(cost_function_test)
+add_srbd_mpc_test(friction_cone_test)
+add_srbd_mpc_test(robot_state_test)

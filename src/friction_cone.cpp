@@ -52,6 +52,9 @@ void FrictionCone::setQP(QPData& qp_data) const {
     }
     qp_data.qp.lbu[i].fill(fzmin_);
     qp_data.qp.ubu[i].fill(fzmax_);
+    if (std::isinf(fzmax_)) {
+      qp_data.qp.ubu_mask[i].fill(1.0);
+    }
   }
   for (int i=0; i<qp_data.dim.N; ++i) {
     qp_data.qp.C[i].setZero();

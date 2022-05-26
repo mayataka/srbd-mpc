@@ -39,14 +39,13 @@ void CostFunction::setQP(const ContactSchedule& contact_schedule,
   dq_command_ = dt_ * v_command_;
   base_pose_.template head<3>() = robot_state.com();
   base_pose_.template tail<4>() = robot_state.quat().coeffs();
-  // reference rotation
+  // The reference rotation whose pitch and roll angles are 0.
   const double cref = robot_state.R().coeff(0, 0);
   const double sref = robot_state.R().coeff(1, 0);
   const double l2normref = std::sqrt(cref*cref + sref*sref);
-  // The reference potich and roll angles are 0.
   Eigen::Matrix3d R_ref; 
-  R_ref << cref/l2normref, -sref/l2normref, 0.,
-           sref/l2normref,  cref/l2normref, 0.,
+  R_ref << cref/l2normref, -sref/l2normref,  0.,
+           sref/l2normref,  cref/l2normref,  0.,
                         0.,              0., 1.;
   base_pose_ref_[0].template head<3>() = robot_state.com();
   base_pose_ref_[0].template tail<4>() = Quaterniond(R_ref).coeffs();
