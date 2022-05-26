@@ -9,6 +9,7 @@
 #include "srbd_mpc/friction_cone.hpp"
 #include "srbd_mpc/qp_data.hpp"
 #include "srbd_mpc/qp_solver.hpp"
+#include "srbd_mpc/mpc_solution.hpp"
 
 
 namespace srbd_mpc {
@@ -27,12 +28,15 @@ public:
   void solve(const ContactSchedule& contact_schedule,
              const GaitCommand& gait_command, const RobotState& robot_state);
 
+  const MPCSolution& getSolution() const { return mpc_solution_; }
+
 private:
   StateEquation state_equation_;
   CostFunction cost_function_;
   FrictionCone friction_cone_;
   QPData qp_data_;
   QPSolver qp_solver_;
+  MPCSolution mpc_solution_;
 };
 
 } // namespace srbd_mpc

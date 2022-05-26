@@ -13,6 +13,7 @@ void QPSolver::solve(QPData& qp_data) {
   settings.createHpipmData(qp_data.dim);
   solver_.createHpipmData(qp_data.dim, settings);
   solver_.solve(qp_data.qp, qp_data.qp_solution, settings);
+  qp_data.qp_solution.getSolutionFromHpipm(qp_data.dim);
 }
 
 } // namespace srbd_mpc

@@ -21,6 +21,7 @@ void MPC::init(const ContactSchedule& contact_schedule) {
   state_equation_.initQP(qp_data_);
   cost_function_.initQP(qp_data_);
   assert(qp_data_.checkSize());
+  mpc_solution_.init(contact_schedule);
 }
 
 
@@ -32,6 +33,7 @@ void MPC::solve(const ContactSchedule& contact_schedule,
   friction_cone_.setQP(qp_data_);
   qp_solver_.solve(qp_data_);
   assert(qp_data_.checkSize());
+  mpc_solution_.update(contact_schedule, robot_state, qp_data_);
 }
 
 } // namespace srbd_mpc
