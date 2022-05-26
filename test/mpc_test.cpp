@@ -65,7 +65,7 @@ TEST_F(MPCTest, testMPC) {
   auto gait_command = GaitCommand();
   gait_command.vcom = Eigen::VectorXd::Random(3);
   gait_command.yaw_rate = Eigen::VectorXd::Random(1)[0];
-  mpc.solve(contact_schedule, gait_command, robot_state);
+  mpc.solve(robot_state, contact_schedule, gait_command);
 }
 
 } // namespace srbd_mpc

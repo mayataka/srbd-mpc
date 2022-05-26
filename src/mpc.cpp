@@ -40,8 +40,9 @@ void MPC::init(const ContactSchedule& contact_schedule) {
 }
 
 
-void MPC::solve(const ContactSchedule& contact_schedule,
-                const GaitCommand& gait_command, const RobotState& robot_state) {
+void MPC::solve(const RobotState& robot_state, 
+                const ContactSchedule& contact_schedule, 
+                const GaitCommand& gait_command) {
   qp_data_.resize(contact_schedule);
   state_equation_.setQP(contact_schedule, robot_state, qp_data_);
   cost_function_.setQP(contact_schedule, robot_state, gait_command, qp_data_);

@@ -28,8 +28,9 @@ public:
 
   void init(const ContactSchedule& contact_schedule);
 
-  void solve(const ContactSchedule& contact_schedule,
-             const GaitCommand& gait_command, const RobotState& robot_state);
+  void solve(const RobotState& robot_state, 
+             const ContactSchedule& contact_schedule,
+             const GaitCommand& gait_command);
 
   const MPCSolution& getSolution() const { return mpc_solution_; }
 
