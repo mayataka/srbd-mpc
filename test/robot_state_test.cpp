@@ -25,7 +25,14 @@ protected:
 
 
 TEST_F(RobotStateTest, testRobotState) {
-  auto robot = RobotState(urdf, feet);
+  auto robot_state = RobotState(urdf, feet);
+  Eigen::VectorXd q = Eigen::VectorXd::Random(19);
+  q.segment<4>(3) = Eigen::Quaternion<double>::UnitRandom().coeffs();
+  Eigen::VectorXd v = Eigen::VectorXd::Random(18);
+  robot_state.update(q, v);
+  EXPECT_TRUE(robot_state.pose().isApprox(q.head<7>()));
+  EXPECT_TRUE(robot_state.quat().coeffs().isApprox(q.segment<4>(3)));
+  EXPECT_TRUE(robot_state.quat().toRotationMatrix().isApprox(robot_state.R()));
 }
 
 } // namespace srbd_mpc

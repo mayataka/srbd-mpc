@@ -38,7 +38,9 @@ void StateEquation::initQP(QPData& qp_data) const {
   }
   for (int i=0; i<qp_data.dim.N; ++i) {
     qp_data.qp.B[i].setZero();
-    qp_data.qp.B[i].template block<3, 3>(9, i*3) = (dt_/m_) * Matrix3d::Identity();
+    for (int j=0; j<4; ++j) {
+      qp_data.qp.B[i].template block<3, 3>(9, j*3) = (dt_/m_) * Matrix3d::Identity();
+    }
   }
   for (int i=0; i<qp_data.dim.N; ++i) {
     qp_data.qp.b[i].setZero();
@@ -64,8 +66,9 @@ void StateEquation::setQP(const ContactSchedule& contact_schedule,
     qp_data.qp.A[i].template block<3, 3>(0, 6) = dt_ * R_;
     int nu = 0;
     for (int j=0; j<4;++j) {
-      if (contact_schedule.isContactActive(i)[j]) {
+      if (contact_schedule.isContactActive(contact_schedule.phase(i))[j]) {
         qp_data.qp.B[i].template block<3, 3>(6, nu) = I_inv_r_skew_[j];
+        qp_data.qp.B[i].template block<3, 3>(9, nu) = (dt_/m_) * Matrix3d::Identity();
         nu += 3;
       } 
     }

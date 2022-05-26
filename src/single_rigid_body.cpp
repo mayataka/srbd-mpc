@@ -2,6 +2,7 @@
 
 #include "pinocchio/parsers/urdf.hpp"
 #include "pinocchio/algorithm/joint-configuration.hpp"
+#include "pinocchio/multibody/model.hpp"
 
 
 namespace srbd_mpc {
@@ -9,17 +10,12 @@ namespace srbd_mpc {
 SingleRigidBody::SingleRigidBody() 
   : model_(),
     data_() {
-  pinocchio::Model model_;
-  pinocchio::Data data_;
-  const auto joint_index = model_.addJoint(model_.getJointId("universe"), 
-                                           pinocchio::JointModelFreeFlyer(),
-                                           SE3::Identity(), 
-                                           "floating_base_joint");
-  model_.appendBodyToJoint(joint_index, pinocchio::Inertia::Zero(), 
-                           SE3::Identity());
-  model_.addBodyFrame("floating_base", joint_index);
-  model_.lowerPositionLimit.template segment<4>(3).fill(-1.);
-  model_.upperPositionLimit.template segment<4>(3).fill(1.);
+  const auto ffidx = model_.addJoint(0, pinocchio::JointModelFreeFlyer(),
+                                     SE3::Identity(), "floating_base_joint");
+  model_.addJointFrame(ffidx);
+  model_.appendBodyToJoint(ffidx, pinocchio::Inertia::Zero(), SE3::Identity());
+  model_.addBodyFrame("floating_base_body", ffidx);
+  model_.addBodyFrame("base_body", ffidx);
 }
 
 
