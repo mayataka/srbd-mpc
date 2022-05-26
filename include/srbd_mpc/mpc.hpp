@@ -10,6 +10,7 @@
 #include "srbd_mpc/qp_data.hpp"
 #include "srbd_mpc/qp_solver.hpp"
 #include "srbd_mpc/mpc_solution.hpp"
+#include "srbd_mpc/solver_options.hpp"
 
 
 namespace srbd_mpc {
@@ -22,6 +23,8 @@ public:
   MPC() = default;
 
   ~MPC() = default;
+
+  void setOptions(const SolverOptions& solver_options);
 
   void init(const ContactSchedule& contact_schedule);
 

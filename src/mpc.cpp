@@ -15,6 +15,21 @@ MPC::MPC(const StateEquation& state_equation, const CostFunction& cost_function,
 }
 
 
+void MPC::setOptions(const SolverOptions& solver_options) {
+  qp_solver_.settings.mode = hpipm::HpipmMode::Speed;
+  qp_solver_.settings.mu0 = solver_options.mu0;
+  qp_solver_.settings.tol_stat = solver_options.tol_stat;
+  qp_solver_.settings.tol_eq = solver_options.tol_eq;
+  qp_solver_.settings.tol_ineq = solver_options.tol_ineq;
+  qp_solver_.settings.tol_comp = solver_options.tol_comp;
+  qp_solver_.settings.reg_prim = solver_options.reg_prim;
+  qp_solver_.settings.warm_start = solver_options.warm_start;
+  qp_solver_.settings.pred_corr = solver_options.pred_corr;
+  qp_solver_.settings.ric_alg = solver_options.ric_alg;
+  qp_solver_.settings.split_step = solver_options.split_step;
+}
+
+
 void MPC::init(const ContactSchedule& contact_schedule) {
   qp_data_.init(contact_schedule);
   qp_solver_.init(qp_data_);
