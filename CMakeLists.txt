@@ -53,13 +53,6 @@ if (OPTIMIZE_FOR_NATIVE)
   )
 endif()
 
-# ##############
-# ## Bindings ##
-# ##############
-# if (BUILD_PYTHON_INTERFACE)
-#   add_subdirectory(bindings/python)
-# endif()
-
 #############
 ## Testing ##
 #############

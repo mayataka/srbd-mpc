@@ -43,7 +43,6 @@ TEST_F(MPCTest, testMPC) {
   auto state_equation = StateEquation(dt);
   auto cost_function = CostFunction(dt, Qqq, Qvv, Quu);
   auto friction_cone = FrictionCone(mu, fzmin, fzmax);
-  // auto mpc = MPC(state_equation, cost_function, friction_cone);
   MPC mpc(state_equation, cost_function, friction_cone);
 
   auto contact_schedule = ContactSchedule(T, N);
