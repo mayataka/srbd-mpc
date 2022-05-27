@@ -1,11 +1,11 @@
-#include "srbd_mpc/single_rigid_body.hpp"
+#include "srbd-mpc/single_rigid_body.hpp"
 
 #include "pinocchio/parsers/urdf.hpp"
 #include "pinocchio/algorithm/joint-configuration.hpp"
 #include "pinocchio/multibody/model.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 SingleRigidBody::SingleRigidBody() 
   : model_(),
@@ -49,4 +49,4 @@ void SingleRigidBody::dDifference_dq0(const Vector7d& qf, const Vector7d& q0,
   pinocchio::dDifference(model_, q0, qf, Jdiff, pinocchio::ARG0);
 }
 
-} // namespace srbd_mpc
+} // namespace srbdmpc

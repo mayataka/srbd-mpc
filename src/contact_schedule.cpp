@@ -1,11 +1,11 @@
-#include "srbd_mpc/contact_schedule.hpp" 
+#include "srbd-mpc/contact_schedule.hpp" 
 
 #include <stdexcept> 
 #include <iostream>
 #include <cmath>
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 ContactSchedule::ContactSchedule(const double T, const int N) 
   : T_(T), 
@@ -65,4 +65,4 @@ void ContactSchedule::push_back(const double t,
   }
 }
 
-} // namespace srbd_mpc
+} // namespace srbdmpc

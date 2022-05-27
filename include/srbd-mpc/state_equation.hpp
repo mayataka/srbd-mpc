@@ -3,13 +3,13 @@
 
 #include <vector>
 
-#include "srbd_mpc/types.hpp"
-#include "srbd_mpc/contact_schedule.hpp"
-#include "srbd_mpc/robot_state.hpp"
-#include "srbd_mpc/qp_data.hpp"
+#include "srbd-mpc/types.hpp"
+#include "srbd-mpc/contact_schedule.hpp"
+#include "srbd-mpc/robot_state.hpp"
+#include "srbd-mpc/qp_data.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 class StateEquation {
 public:
@@ -38,6 +38,6 @@ private:
   aligned_vector<Matrix3d> I_inv_r_skew_;
 };
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 #endif // SRBD_MPC_STATE_EQUATION_HPP_

@@ -11,7 +11,7 @@
 #include "pinocchio/spatial/explog.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 
 using MatrixXd   = Eigen::MatrixXd;
@@ -36,6 +36,6 @@ using aligned_vector = std::vector<T, Eigen::aligned_allocator<T>>;
 
 using pinocchio::SE3;
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 #endif // SRBD_MPC_TYPES_HPP_

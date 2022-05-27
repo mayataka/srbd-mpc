@@ -1,11 +1,11 @@
-#include "srbd_mpc/friction_cone.hpp"
+#include "srbd-mpc/friction_cone.hpp"
 
 #include <stdexcept>
 #include <iostream>
 #include <cmath>
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 FrictionCone::FrictionCone(const double mu, const double fzmin, const double fzmax)
   : mu_(mu),
@@ -70,4 +70,4 @@ void FrictionCone::setQP(QPData& qp_data) const {
   }
 }
 
-} // namespace srbd_mpc
+} // namespace srbdmpc

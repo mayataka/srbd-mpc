@@ -1,7 +1,7 @@
-#include "srbd_mpc/qp_solver.hpp"
+#include "srbd-mpc/qp_solver.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 void QPSolver::init(QPData& qp_data) {
   settings.createHpipmData(qp_data.dim);
@@ -16,4 +16,4 @@ void QPSolver::solve(QPData& qp_data) {
   qp_data.qp_solution.getSolutionFromHpipm(qp_data.dim);
 }
 
-} // namespace srbd_mpc
+} // namespace srbdmpc

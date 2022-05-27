@@ -1,19 +1,19 @@
 #ifndef SRBD_MPC_MPC_HPP_
 #define SRBD_MPC_MPC_HPP_
 
-#include "srbd_mpc/contact_schedule.hpp"
-#include "srbd_mpc/gait_command.hpp"
-#include "srbd_mpc/robot_state.hpp"
-#include "srbd_mpc/state_equation.hpp"
-#include "srbd_mpc/cost_function.hpp"
-#include "srbd_mpc/friction_cone.hpp"
-#include "srbd_mpc/qp_data.hpp"
-#include "srbd_mpc/qp_solver.hpp"
-#include "srbd_mpc/mpc_solution.hpp"
-#include "srbd_mpc/solver_options.hpp"
+#include "srbd-mpc/contact_schedule.hpp"
+#include "srbd-mpc/gait_command.hpp"
+#include "srbd-mpc/robot_state.hpp"
+#include "srbd-mpc/state_equation.hpp"
+#include "srbd-mpc/cost_function.hpp"
+#include "srbd-mpc/friction_cone.hpp"
+#include "srbd-mpc/qp_data.hpp"
+#include "srbd-mpc/qp_solver.hpp"
+#include "srbd-mpc/mpc_solution.hpp"
+#include "srbd-mpc/solver_options.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 class MPC {
 public:
@@ -43,6 +43,6 @@ private:
   MPCSolution mpc_solution_;
 };
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 #endif // SRBD_MPC_MPC_HPP_

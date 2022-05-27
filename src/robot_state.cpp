@@ -1,4 +1,4 @@
-#include "srbd_mpc/robot_state.hpp"
+#include "srbd-mpc/robot_state.hpp"
 
 #include "pinocchio/parsers/urdf.hpp"
 #include "pinocchio/algorithm/joint-configuration.hpp"
@@ -9,7 +9,7 @@
 #include <iostream>
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 RobotState::RobotState(const std::string& urdf, 
                        const std::vector<std::string>& feet) 
@@ -58,4 +58,4 @@ void RobotState::update(const Vector19d& q, const Vector18d& v) {
   }
 }
 
-} // namespace srbd_mpc
+} // namespace srbdmpc

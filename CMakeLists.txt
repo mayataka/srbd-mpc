@@ -1,15 +1,15 @@
 cmake_minimum_required(VERSION 3.11)
-project(srbd_mpc CXX)
+project(srbd-mpc CXX)
 set(CMAKE_CXX_STANDARD 11)
 
 #############
 ## Options ##
 #############
 option(OPTIMIZE_FOR_NATIVE "Enable -march=native" OFF)
-option(BUILD_PYTHON_INTERFACE "Build Python interface" ON)
+option(BUILD_TESTING "Build testing" OFF)
 
 ####################
-## Build srbd_mpc ##
+## Build srbd-mpc ##
 ####################
 if(NOT CMAKE_BUILD_TYPE MATCHES Release)
   message(STATUS "WARNING: CMAKE_BUILD_TYPE is NOT set to Release, which can decrease performance significantly.")

@@ -1,4 +1,4 @@
-# srbd_mpc
+# srbd-mpc
 Single Rigid-Body Dynamics (SRBD) based linear convex MPC for real-time ground reaction force (GRF) planning
 
 # Requirements

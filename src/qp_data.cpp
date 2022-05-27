@@ -1,7 +1,7 @@
-#include "srbd_mpc/qp_data.hpp"
+#include "srbd-mpc/qp_data.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 void QPData::init(const ContactSchedule& contact_schedule) {
   // Here, we allocate memory as the possible maximum size.
@@ -149,4 +149,4 @@ bool QPData::checkSize() const {
   return true;
 }
 
-} // namespace srbd_mpc
+} // namespace srbdmpc

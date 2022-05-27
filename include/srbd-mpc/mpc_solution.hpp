@@ -1,14 +1,14 @@
 #ifndef SRBD_MPC_MPC_SOLUTION_HPP_
 #define SRBD_MPC_MPC_SOLUTION_HPP_
 
-#include "srbd_mpc/types.hpp"
-#include "srbd_mpc/contact_schedule.hpp"
-#include "srbd_mpc/robot_state.hpp"
-#include "srbd_mpc/qp_data.hpp"
-#include "srbd_mpc/single_rigid_body.hpp"
+#include "srbd-mpc/types.hpp"
+#include "srbd-mpc/contact_schedule.hpp"
+#include "srbd-mpc/robot_state.hpp"
+#include "srbd-mpc/qp_data.hpp"
+#include "srbd-mpc/single_rigid_body.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 class MPCSolution {
 public:
@@ -50,6 +50,6 @@ private:
   SingleRigidBody single_rigid_body_;
 };
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 #endif // SRBD_MPC_MPC_SOLUTION_HPP_

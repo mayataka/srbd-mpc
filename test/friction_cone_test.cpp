@@ -2,10 +2,10 @@
 
 #include <gtest/gtest.h>
 
-#include "srbd_mpc/friction_cone.hpp"
+#include "srbd-mpc/friction_cone.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 
 class FrictionConeTest : public ::testing::Test {
@@ -27,7 +27,7 @@ TEST_F(FrictionConeTest, testFrictionCone) {
   FrictionCone friction_cone(mu ,fzmin, fzmax);
 }
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 
 int main(int argc, char** argv) {

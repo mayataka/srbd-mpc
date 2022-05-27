@@ -3,13 +3,13 @@
 
 #include <vector>
 
-#include "srbd_mpc/types.hpp"
-#include "srbd_mpc/contact_schedule.hpp"
-#include "srbd_mpc/robot_state.hpp"
-#include "srbd_mpc/qp_data.hpp"
+#include "srbd-mpc/types.hpp"
+#include "srbd-mpc/contact_schedule.hpp"
+#include "srbd-mpc/robot_state.hpp"
+#include "srbd-mpc/qp_data.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 class SingleRigidBody {
 public:
@@ -36,6 +36,6 @@ private:
   pinocchio::Data data_;
 };
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 #endif // SRBD_MPC_SINGLE_RIGID_BODY_HPP_

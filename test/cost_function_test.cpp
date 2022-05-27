@@ -2,10 +2,10 @@
 
 #include <gtest/gtest.h>
 
-#include "srbd_mpc/cost_function.hpp"
+#include "srbd-mpc/cost_function.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 class CostFunctionTest : public ::testing::Test {
 protected:
@@ -35,7 +35,7 @@ TEST_F(CostFunctionTest, testCostFunction) {
   CostFunction cost_function(dt, Qqq, Qvv, Quu);
 }
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 
 int main(int argc, char** argv) {

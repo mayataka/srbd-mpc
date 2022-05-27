@@ -1,11 +1,11 @@
-#include "srbd_mpc/state_equation.hpp"
+#include "srbd-mpc/state_equation.hpp"
 
 #include <stdexcept>
 #include <iostream>
 #include <cmath>
 #include <cassert>
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 StateEquation::StateEquation(const double dt, const double m, const Matrix3d& I, 
                              const Vector3d& g)
@@ -75,4 +75,4 @@ void StateEquation::setQP(const ContactSchedule& contact_schedule,
   }
 }
 
-} // namespace srbd_mpc
+} // namespace srbdmpc

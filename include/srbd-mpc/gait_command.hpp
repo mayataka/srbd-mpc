@@ -1,15 +1,10 @@
 #ifndef SRBD_MPC_GAIT_COMMAND_HPP_
 #define SRBD_MPC_GAIT_COMMAND_HPP_
 
-#include <vector>
-
-#include "srbd_mpc/types.hpp"
-#include "srbd_mpc/leg_kinematics.hpp"
-#include "srbd_mpc/contact_schedule.hpp"
-#include "srbd_mpc/qp_data.hpp"
+#include "srbd-mpc/types.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 struct GaitCommand {
 public:
@@ -22,6 +17,6 @@ public:
   double yaw_rate;
 };
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 #endif // SRBD_MPC_GAIT_COMMAND_HPP_

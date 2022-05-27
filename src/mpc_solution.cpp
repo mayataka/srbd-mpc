@@ -1,7 +1,7 @@
-#include "srbd_mpc/mpc_solution.hpp"
+#include "srbd-mpc/mpc_solution.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 void MPCSolution::init(const ContactSchedule& contact_schedule) {
   const int N = contact_schedule.N();
@@ -50,4 +50,4 @@ void MPCSolution::update(const ContactSchedule& contact_schedule,
   }
 }
 
-} // namespace srbd_mpc
+} // namespace srbdmpc

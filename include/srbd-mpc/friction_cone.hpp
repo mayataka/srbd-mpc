@@ -3,10 +3,10 @@
 
 #include <limits>
 
-#include "srbd_mpc/types.hpp"
-#include "srbd_mpc/qp_data.hpp"
+#include "srbd-mpc/types.hpp"
+#include "srbd-mpc/qp_data.hpp"
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 class FrictionCone {
 public:
@@ -24,6 +24,6 @@ private:
   MatrixXd cone_;
 };
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 #endif // SRBD_MPC_FRICTION_CONE_HPP_

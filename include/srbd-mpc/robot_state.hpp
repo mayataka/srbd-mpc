@@ -8,10 +8,10 @@
 #include "pinocchio/multibody/model.hpp"
 #include "pinocchio/multibody/data.hpp"
 
-#include "srbd_mpc/types.hpp"
+#include "srbd-mpc/types.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 class RobotState {
 public:
@@ -78,6 +78,6 @@ private:
   aligned_vector<Matrix3d> fk_skew_;
 };
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 #endif // SRBD_MPC_ROBOT_STATE_HPP_

@@ -2,10 +2,10 @@
 
 #include <gtest/gtest.h>
 
-#include "srbd_mpc/contact_schedule.hpp"
+#include "srbd-mpc/contact_schedule.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 class ContactScheduleTest : public ::testing::Test {
 protected:
@@ -71,7 +71,7 @@ TEST_F(ContactScheduleTest, testContactSchedule) {
   EXPECT_FALSE(contact_schedule.isContactActive(1)[3]);
 }
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 
 int main(int argc, char** argv) {

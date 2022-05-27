@@ -3,13 +3,13 @@
 
 #include <vector>
 
-#include "srbd_mpc/types.hpp"
-#include "srbd_mpc/contact_schedule.hpp"
-#include "srbd_mpc/robot_state.hpp"
-#include "srbd_mpc/qp_data.hpp"
+#include "srbd-mpc/types.hpp"
+#include "srbd-mpc/contact_schedule.hpp"
+#include "srbd-mpc/robot_state.hpp"
+#include "srbd-mpc/qp_data.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 struct SolverOptions {
   double mu0 = 1.0e+02; // intial barrier parameter
@@ -33,6 +33,6 @@ struct SolverOptions {
   int split_step = 0; //  use different step for primal and dual variables or not
 };
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 #endif // SRBD_MPC_SOLVER_OPTIONS_HPP_

@@ -1,7 +1,7 @@
-#include "srbd_mpc/cost_function.hpp"
+#include "srbd-mpc/cost_function.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 CostFunction::CostFunction(const double dt, const Matrix6d& Qqq, 
                            const Matrix6d& Qvv, const Matrix3d& Quu)
@@ -69,4 +69,4 @@ void CostFunction::setQP(const ContactSchedule& contact_schedule,
   }
 }
 
-} // namespace srbd_mpc
+} // namespace srbdmpc

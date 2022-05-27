@@ -5,10 +5,10 @@
 #include <string>
 
 #include "hpipm-cpp/hpipm-cpp.hpp"
-#include "srbd_mpc/contact_schedule.hpp"
+#include "srbd-mpc/contact_schedule.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 struct QPData {
 public:
@@ -29,6 +29,6 @@ public:
   hpipm::OcpQpSolution qp_solution;
 };
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 #endif // SRBD_MPC_QP_DATA_HPP_

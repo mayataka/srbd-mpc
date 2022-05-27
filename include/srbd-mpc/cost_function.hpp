@@ -3,15 +3,15 @@
 
 #include <vector>
 
-#include "srbd_mpc/types.hpp"
-#include "srbd_mpc/qp_data.hpp"
-#include "srbd_mpc/contact_schedule.hpp"
-#include "srbd_mpc/robot_state.hpp"
-#include "srbd_mpc/gait_command.hpp"
-#include "srbd_mpc/single_rigid_body.hpp"
+#include "srbd-mpc/types.hpp"
+#include "srbd-mpc/qp_data.hpp"
+#include "srbd-mpc/contact_schedule.hpp"
+#include "srbd-mpc/robot_state.hpp"
+#include "srbd-mpc/gait_command.hpp"
+#include "srbd-mpc/single_rigid_body.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 class CostFunction {
 public:
@@ -42,6 +42,6 @@ private:
   Matrix6d Jqdiff_, JtQqq_;
 };
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 #endif // SRBD_MPC_COST_FUNCTION_HPP_

@@ -2,10 +2,10 @@
 #define SRBD_MPC_QP_SOLVER_HPP_
 
 #include "hpipm-cpp/hpipm-cpp.hpp"
-#include "srbd_mpc/qp_data.hpp"
+#include "srbd-mpc/qp_data.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 class QPSolver {
 public:
@@ -24,6 +24,6 @@ private:
 
 };
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 #endif // SRBD_MPC_QP_DATA_HPP_

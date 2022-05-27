@@ -1,9 +1,9 @@
-#include "srbd_mpc/mpc.hpp"
+#include "srbd-mpc/mpc.hpp"
 
 #include <cassert>
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 MPC::MPC(const StateEquation& state_equation, const CostFunction& cost_function, 
          const FrictionCone& friction_cone)
@@ -52,4 +52,4 @@ void MPC::solve(const RobotState& robot_state,
   mpc_solution_.update(contact_schedule, robot_state, qp_data_);
 }
 
-} // namespace srbd_mpc
+} // namespace srbdmpc

@@ -3,10 +3,10 @@
 
 #include <gtest/gtest.h>
 
-#include "srbd_mpc/single_rigid_body.hpp"
+#include "srbd-mpc/single_rigid_body.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 
 class SingleRigidBodyTest : public ::testing::Test {
@@ -28,7 +28,7 @@ TEST_F(SingleRigidBodyTest, testSingleRigidBody) {
   auto single_rigid_body = SingleRigidBody();
 }
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 
 int main(int argc, char** argv) {

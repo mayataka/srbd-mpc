@@ -5,9 +5,9 @@
 #include <deque>
 #include <cassert>
 
-#include "srbd_mpc/types.hpp"
+#include "srbd-mpc/types.hpp"
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 class ContactSchedule {
 public:
@@ -60,6 +60,6 @@ private:
   std::vector<int> phase_;
 };
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 #endif // SRBD_MPC_CONTACT_SCHEDULE_HPP_

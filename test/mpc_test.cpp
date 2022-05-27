@@ -3,10 +3,10 @@
 
 #include <gtest/gtest.h>
 
-#include "srbd_mpc/mpc.hpp"
+#include "srbd-mpc/mpc.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 
 class MPCTest : public ::testing::Test {
@@ -67,7 +67,7 @@ TEST_F(MPCTest, testMPC) {
   mpc.solve(robot_state, contact_schedule, gait_command);
 }
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 
 int main(int argc, char** argv) {

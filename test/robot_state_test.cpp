@@ -3,10 +3,10 @@
 
 #include <gtest/gtest.h>
 
-#include "srbd_mpc/robot_state.hpp"
+#include "srbd-mpc/robot_state.hpp"
 
 
-namespace srbd_mpc {
+namespace srbdmpc {
 
 
 class RobotStateTest : public ::testing::Test {
@@ -35,7 +35,7 @@ TEST_F(RobotStateTest, testRobotState) {
   EXPECT_TRUE(robot_state.quat().toRotationMatrix().isApprox(robot_state.R()));
 }
 
-} // namespace srbd_mpc
+} // namespace srbdmpc
 
 
 int main(int argc, char** argv) {
